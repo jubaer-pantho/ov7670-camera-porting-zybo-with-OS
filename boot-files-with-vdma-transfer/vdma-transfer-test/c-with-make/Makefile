@@ -1,0 +1,17 @@
+CC=gcc
+CFLAGS=-I.
+CFLAGS+=-g
+CFLAGS+=-w
+LINK=CC
+DEPS=
+LDFLAGS= -nostartfiles
+OBJ = main.o
+
+%.o: %.c $(DEPS)
+	$(CC) $(LDFLAGS) -c -o $@ $< $(CFLAGS)
+
+main: $(OBJ)
+	gcc -o $@ $^ $(CFLAGS)
+clean:
+	rm -rfv *.o
+.PHONY: clean
